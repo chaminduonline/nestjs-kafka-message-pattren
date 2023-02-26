@@ -1,0 +1,21 @@
+version: '3.0'
+services:
+  producer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: producer
+    ports:
+      - "3000:3000"
+    command: ["/bin/sh","-c","sleep infinity"]
+    networks:
+      - ourmind
+    environment:
+      NODE_ENV: development
+    volumes:
+      - .:/usr/app/producer
+networks:
+  ourmind:
+   driver: bridge
+   name: ourmind-network
+   attachable: true

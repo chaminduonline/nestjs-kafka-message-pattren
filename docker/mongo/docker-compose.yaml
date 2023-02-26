@@ -1,0 +1,16 @@
+version: '3.0'
+services:
+   mongodb:
+    container_name: mongodb
+    image: mongo
+    volumes:
+      - ~/app/mongodb/parent:/var/lib/mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - ourmind
+networks:
+  ourmind:
+   driver: bridge
+   name: ourmind-network
+   attachable: true
